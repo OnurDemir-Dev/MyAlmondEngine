@@ -1,0 +1,6 @@
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Gg]ame[Bb]uild/
+
+*.code-workspace
