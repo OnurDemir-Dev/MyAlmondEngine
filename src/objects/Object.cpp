@@ -13,7 +13,7 @@ void Object::Start()
     WriteOnConsole("Start");
 }
 
-void Object::Update()
+void Object::Update(float deltaTime)
 {
     
 }
@@ -24,14 +24,3 @@ void Object::Draw()
 }
 
 
-template <typename T>
-T *Object::CreateObject()
-{
-    return Engine::CurrentLevel->CreateObject<T>();
-}
-
-template <typename T>
-void Object::WriteOnConsole(T logString)
-{
-    std::cout<< m_objectName << ": " << logString << std::endl;
-}

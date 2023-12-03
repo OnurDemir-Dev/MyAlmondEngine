@@ -48,6 +48,34 @@ void Shader::useShader()
     glUseProgram(m_shaderProgram);
 }
 
+GLint Shader::getUniformLocation(const std::string& localName) const
+{
+	return glGetUniformLocation(m_shaderProgram, localName.c_str());
+}
+
+void Shader::setBool(const std::string& name, bool value) const
+{
+	glUniform1i(getUniformLocation(name), (int)value);
+}
+
+void Shader::setInt(const std::string& name, int value) const
+{
+	glUniform1i(getUniformLocation(name), value);
+}
+
+void Shader::setFloat(const std::string& name, float value) const
+{
+	glUniform1f(getUniformLocation(name), value);
+}
+
+void Shader::setVec3(const std::string& name, const Vector3& value) const
+{
+	glUniform3fv(getUniformLocation(name), 1, &static_cast<glm::vec3>(value)[0]);
+}
+void Shader::setVec3(const std::string& name, float x, float y, float z) const
+{
+	glUniform3f(getUniformLocation(name), x, y, z);
+}
 
 void Shader::checkCompileErrors(GLuint shader, std::string type)
     {

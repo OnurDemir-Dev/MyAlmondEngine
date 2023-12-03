@@ -6,7 +6,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
-
+#include "transforms/Vectors.h"
 
 #include <fstream>
 #include <sstream>
@@ -17,13 +17,14 @@ class Mesh
 {
 
 public:
-    Mesh(const std::vector<glm::vec3> vertices, const std::vector<GLuint>& indices);
+    Mesh(const std::vector<Vector3> vertices, const std::vector<unsigned int>& indices);
     ~Mesh();
 
     void Draw();
 
 private:
     GLuint VAO, VBO, EBO;
+    //TODO: Mesh Shader will change later
     GLuint* m_meshShader;
     GLsizei indexCount;
 };

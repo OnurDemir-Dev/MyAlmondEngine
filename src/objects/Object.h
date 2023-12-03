@@ -12,7 +12,7 @@ public:
     Object();
 
     virtual void Start();
-    virtual void Update();
+    virtual void Update(float deltaTime);
     virtual void Draw();
 
     void SetName(const char* newName) { m_objectName = newName; }
@@ -21,12 +21,11 @@ public:
     void setScale(const glm::vec3& scale);
     void setRotation(float angle, const glm::vec3& axis);
 
-
     template <typename T>
-    T* CreateObject();
-
-    template <typename T>
-    void WriteOnConsole(T logString);
+    void WriteOnConsole(T logString) 
+    {
+        std::cout<< m_objectName << ": " << logString << std::endl;
+    }
 
 private:
 

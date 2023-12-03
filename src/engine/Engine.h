@@ -16,6 +16,7 @@ class Engine
 public:
     static Engine* CurrentEngine;
     static Level* CurrentLevel;
+    static Shader* CurrentShader;
 
     Engine();
 

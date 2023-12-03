@@ -3,6 +3,7 @@
 
 #include "objects/Object.h"
 #include "model/Mesh.h"
+#include "camera/Camera.h"
 
 #include <iostream>
 #include <vector>
@@ -11,9 +12,13 @@
 class Level
 {
 public:
+    Level();
+
     virtual void Start();
     virtual void Update(float deltaTime);
     virtual void Draw();
+
+    std::vector<Object*> GetCurrentObjects() { return m_objects;}
 
     template <typename T>
     T* CreateObject(const char* objectName)
@@ -26,9 +31,10 @@ public:
     }
 
 protected:
-
+    Camera* levelCamera;
 private:
     std::vector<Object*> m_objects;
+    
 
     void baseStart();
     void baseUpdate(float deltaTime);

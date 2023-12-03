@@ -8,14 +8,51 @@
 // Define Vector3 class derived from Vector2
 class Vector3 {
 public:
-    
 
     // Constructors
     Vector3() : data(0.0f, 0.0f, 0.0f) {}
     Vector3(float x, float y, float z) : data(x, y, z) {}
+    Vector3(glm::vec3 x) : data(x) {}
+
+    operator glm::vec3() const;
 
     void Translate(Vector3 newVector3);
 
+    float x() const { return data.x; }
+    float y() const { return data.y; }
+    float z() const { return data.z; }
+
+    void x(float value) { data.x = value; }
+    void y(float value) { data.y = value; }
+    void z(float value) { data.z = value; }
+
+    float length() const { return glm::length(data); }
+    Vector3 normalize() const { return glm::normalize(data); }
+    float dot(const Vector3& other) const { return glm::dot(data, other.data); }
+    Vector3 cross(const Vector3& other) const { return glm::cross(data, other.data); }
+
+    Vector3 operator+(const Vector3& other) const { return data + other.data; }
+    Vector3 operator-(const Vector3& other) const { return data - other.data; }
+    Vector3 operator*(float scalar) const { return data * scalar; }
+    Vector3 operator/(float scalar) const { return data / scalar; }
+
+    float operator[](int index) const { return data[index]; }
+
+    Vector3 operator+=(const Vector3& other) const { return data + other.data; }
+    Vector3 operator-=(const Vector3& other) const { return data - other.data; }
+    Vector3 operator*=(float scalar) const { return data * scalar; }
+    Vector3 operator/=(float scalar) const { return data / scalar; }
+
+    static Vector3 zero() { return Vector3(0.0f, 0.0f, 0.0f); }
+    static Vector3 one() { return Vector3(1.0f, 1.0f, 1.0f); }
+    static Vector3 up() { return Vector3(0.0f, 1.0f, 0.0f); }
+    static Vector3 down() { return Vector3(0.0f, -1.0f, 0.0f); }
+    static Vector3 right() { return Vector3(1.0f, 0.0f, 0.0f); }
+    static Vector3 left() { return Vector3(-1.0f, 0.0f, 0.0f); }
+    static Vector3 forward() { return Vector3(0.0f, 0.0f, 1.0f); }
+    static Vector3 backward() { return Vector3(0.0f, 0.0f, -1.0f); }
+
+    glm::vec3 getData() {return data; }
 protected:
     glm::vec3 data;
 

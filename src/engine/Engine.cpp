@@ -39,7 +39,7 @@ int Engine::StartEngine(Level* startLevel, int width, int height, const char* wi
     startLevel->Start();
 
 
-    Shader currentShader("src\\resources\\shaders\\default.vert", "src\\resources\\shaders\\default.frag");
+    CurrentShader = new Shader("src\\resources\\shaders\\default.vert", "src\\resources\\shaders\\default.frag");
 
     
 
@@ -54,7 +54,7 @@ int Engine::StartEngine(Level* startLevel, int width, int height, const char* wi
 
         Update(deltaTime);
 
-        currentShader.useShader();
+        CurrentShader->useShader();
 
         Draw();
 

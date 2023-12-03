@@ -1,8 +1,7 @@
 #include "model/Mesh.h"
 
 
-
-Mesh::Mesh(const std::vector<glm::vec3> vertices, const std::vector<GLuint>& indices)
+Mesh::Mesh(const std::vector<Vector3> vertices, const std::vector<unsigned int>& indices)
 {
     m_meshShader = nullptr;
     glGenVertexArrays(1, &VAO);
