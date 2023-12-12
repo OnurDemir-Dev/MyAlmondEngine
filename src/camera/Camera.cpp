@@ -1,11 +1,14 @@
 #include "Camera.h"
 
+#include "engine/Engine.h"
+
 Camera::Camera(Vector3 position, Vector3 up, float yaw, float pitch) : Front(Vector3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
 {
     Position = position;
     WorldUp = up;
     Yaw = yaw;
     Pitch = pitch;
+    projection = glm::perspective(glm::radians(Zoom), (float)Engine::ScreenWidth / (float)Engine::ScreenHeight, 0.1f, 100.0f); 
     updateCameraVectors();
 }
 
@@ -15,19 +18,35 @@ Camera::Camera(float posX, float posY, float posZ, float upX, float upY, float u
     WorldUp = Vector3(upX, upY, upZ);
     Yaw = yaw;
     Pitch = pitch;
+    projection = glm::perspective(glm::radians(Zoom), (float)Engine::ScreenWidth / (float)Engine::ScreenHeight, 0.1f, 100.0f); 
     updateCameraVectors();
+}
+
+void Camera::Start()
+{
 }
 
 void Camera::Update(float deltaTime)
 {
-    
+    projection = glm::perspective(glm::radians(Zoom), (float)Engine::ScreenWidth / (float)Engine::ScreenHeight, 0.1f, 100.0f);
+}
+
+void Camera::Draw()
+{
+    Engine::CurrentShader->setMat4("view", GetViewMatrix());
+    Engine::CurrentShader->setMat4("projection", projection);
 }
 
 void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
     float velocity = MovementSpeed * deltaTime;
     if (direction == FORWARD)
+    {
         Position += Front * velocity;
+        std::cout << Position.x() << ", " << Position.y() << ", " << Position.z() << std::endl;
+        std::cout << MovementSpeed << std::endl;
+    }
+        
     if (direction == BACKWARD)
         Position -= Front * velocity;
     if (direction == LEFT)
@@ -102,7 +121,7 @@ void Camera::updateCameraVectors()
 {
     // calculate the new Front vector
     Vector3 front;
-    front.x( cos(glm::radians(Yaw)) * cos(glm::radians(Pitch)));
+    front.x(cos(glm::radians(Yaw)) * cos(glm::radians(Pitch)));
     front.y(sin(glm::radians(Pitch)));
     front.z(sin(glm::radians(Yaw)) * cos(glm::radians(Pitch)));
 

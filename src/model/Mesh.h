@@ -20,6 +20,7 @@ public:
     Mesh(const std::vector<Vector3> vertices, const std::vector<unsigned int>& indices);
     ~Mesh();
 
+    void Update();
     void Draw();
 
 private:
@@ -27,6 +28,7 @@ private:
     //TODO: Mesh Shader will change later
     GLuint* m_meshShader;
     GLsizei indexCount;
+    glm::mat4 model;
 };
 
 #endif

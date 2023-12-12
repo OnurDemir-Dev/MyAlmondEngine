@@ -17,10 +17,13 @@ public:
     static Engine* CurrentEngine;
     static Level* CurrentLevel;
     static Shader* CurrentShader;
+    static int ScreenWidth, ScreenHeight;
 
     Engine();
 
     int StartEngine(Level* startLevel, int width = 800, int height = 800, const char* windowName = "OpenGL", GLFWmonitor* monitor = NULL, GLFWwindow* share = NULL);
+    void processInput(GLFWwindow* window);
+    
 
 private:
     GLFWwindow* m_mainWindow;

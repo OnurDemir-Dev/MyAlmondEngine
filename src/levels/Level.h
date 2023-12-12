@@ -19,6 +19,7 @@ public:
     virtual void Draw();
 
     std::vector<Object*> GetCurrentObjects() { return m_objects;}
+    Camera* GetLevelCamera() { return levelCamera ;}
 
     template <typename T>
     T* CreateObject(const char* objectName)

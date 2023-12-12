@@ -42,11 +42,14 @@ public:
     float MovementSpeed;
     float MouseSensitivity;
     float Zoom;
+    glm::mat4 projection;
 
     Camera(Vector3 position = Vector3(0.0f, 0.0f, 0.0f), Vector3 up = Vector3(0.0f, 1.0f, 0.0f), float yaw = YAW, float pitch = PITCH);
     Camera(float posX, float posY, float posZ, float upX, float upY, float upZ, float yaw, float pitch);
 
+    void Start();
     void Update(float deltaTime);
+    void Draw();
 
     glm::mat4 GetViewMatrix() { return glm::lookAt(glm::vec3(Position), glm::vec3(Position + Front), glm::vec3(Up)); }
 

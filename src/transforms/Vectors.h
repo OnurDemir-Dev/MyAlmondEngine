@@ -31,17 +31,35 @@ public:
     float dot(const Vector3& other) const { return glm::dot(data, other.data); }
     Vector3 cross(const Vector3& other) const { return glm::cross(data, other.data); }
 
-    Vector3 operator+(const Vector3& other) const { return data + other.data; }
+    Vector3 operator+(const Vector3& other) const{ return data + other.data; }
     Vector3 operator-(const Vector3& other) const { return data - other.data; }
     Vector3 operator*(float scalar) const { return data * scalar; }
-    Vector3 operator/(float scalar) const { return data / scalar; }
+    Vector3 operator/(float scalar) const{ return data / scalar; }
+//    Vector3 operator=(const Vector3& other) const { return other; }
+
 
     float operator[](int index) const { return data[index]; }
 
-    Vector3 operator+=(const Vector3& other) const { return data + other.data; }
-    Vector3 operator-=(const Vector3& other) const { return data - other.data; }
-    Vector3 operator*=(float scalar) const { return data * scalar; }
-    Vector3 operator/=(float scalar) const { return data / scalar; }
+    Vector3& operator+=(const Vector3& other)
+    {
+        data += other.data;
+        return *this;
+    }
+    Vector3& operator-=(const Vector3& other) 
+    {
+        data -= other.data;
+        return *this;
+    }
+    Vector3& operator*=(float scalar) 
+    {
+        data *= scalar;
+        return *this;
+    }
+    Vector3& operator/=(float scalar)
+    {
+        data /= scalar;
+        return *this;
+    }
 
     static Vector3 zero() { return Vector3(0.0f, 0.0f, 0.0f); }
     static Vector3 one() { return Vector3(1.0f, 1.0f, 1.0f); }

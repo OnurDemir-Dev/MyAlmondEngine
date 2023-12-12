@@ -9,6 +9,7 @@ Level::Level()
 void Level::baseStart()
 {
     Start();
+    levelCamera->Start();
 }
 
 void Level::baseUpdate(float deltaTime)
@@ -18,6 +19,7 @@ void Level::baseUpdate(float deltaTime)
         m_objects[i]->Update(deltaTime);
     }
     Update(deltaTime);
+    levelCamera->Update(deltaTime);
 }
 
 void Level::baseDraw()
@@ -27,6 +29,7 @@ void Level::baseDraw()
         m_objects[i]->Draw();
     }
     Draw();
+    levelCamera->Draw();
 }
 
 void Level::Start()

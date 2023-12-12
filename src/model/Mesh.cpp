@@ -1,9 +1,11 @@
 #include "model/Mesh.h"
-
+#include "Mesh.h"
+#include "engine/Engine.h"
 
 Mesh::Mesh(const std::vector<Vector3> vertices, const std::vector<unsigned int>& indices)
 {
     m_meshShader = nullptr;
+    model = glm::mat4(1.0f);
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glGenBuffers(1, &EBO);
@@ -32,7 +34,14 @@ Mesh::~Mesh() {
     glDeleteBuffers(1, &EBO);
 }
 
-void Mesh::Draw() {
+void Mesh::Update()
+{
+
+}
+
+void Mesh::Draw()
+{
+    Engine::CurrentShader->setMat4("model", model);
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
