@@ -26,7 +26,7 @@ public:
     {
         T* tempObject = new T();
         tempObject->SetName(objectName);
-        tempObject->Start();
+        tempObject->baseStart();
         m_objects.push_back(tempObject);
         return tempObject;
     }

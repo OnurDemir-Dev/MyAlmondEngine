@@ -7,13 +7,14 @@
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
 #include "transforms/Vectors.h"
+#include "objects/Component.h"
 
 #include <fstream>
 #include <sstream>
 #include <iostream>
 #include <vector>
 
-class Mesh
+class Mesh : public Component
 {
 
 public:
