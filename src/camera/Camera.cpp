@@ -137,4 +137,9 @@ void Camera::updateCameraVectors()
     Up = Right.cross(Front).normalize();
 }
 
+void Camera::SetPosition(Vector3 _position)
+{
+    Position = _position;
+}
+
 

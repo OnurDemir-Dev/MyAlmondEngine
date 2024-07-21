@@ -47,4 +47,13 @@ void Object::Draw()
 
 }
 
+void Object::setPosition(const Vector3 position)
+{
+    m_transform.SetPosition(position);
+}
+
+Transform Object::getTransform()
+{
+    return m_transform;
+}
 

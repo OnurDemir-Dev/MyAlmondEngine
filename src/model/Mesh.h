@@ -18,7 +18,7 @@ class Mesh : public Component
 {
 
 public:
-    Mesh(const std::vector<Vector3> vertices, const std::vector<unsigned int>& indices);
+    Mesh(const std::vector<Vector3> vertices, const std::vector<GLuint>& indices);
     ~Mesh();
 
     void Update();

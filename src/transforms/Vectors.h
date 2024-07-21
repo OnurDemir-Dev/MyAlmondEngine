@@ -123,6 +123,8 @@ public:
     Transform() : m_position(0.0f, 0.0f, 0.0f), m_rotation(0.0f, 0.0f, 0.0f), m_scale(1.0f, 1.0f, 1.0f) {}
 
     void SetPosition(Vector3 newPos);
+    
+    Vector3 GetPosition();
 protected:
     Vector3 m_position;
     Vector3 m_rotation;

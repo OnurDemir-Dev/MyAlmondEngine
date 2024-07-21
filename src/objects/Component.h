@@ -11,7 +11,7 @@ class Component
         virtual void Update(float deltaTime);
         virtual void Draw();
 
-        void SetOwnerObject(class Object& _ownerobject) { ownerObject = ownerObject; }
+        void SetOwnerObject(class Object* _ownerobject) { ownerObject = _ownerobject; }
 
     protected:
         class Object* ownerObject;

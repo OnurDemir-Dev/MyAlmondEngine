@@ -27,6 +27,8 @@ const float ZOOM = 45.0f;
 
 class Camera
 {
+private:
+    
 public:
     // camera Attributes
     Vector3 Position;
@@ -58,6 +60,8 @@ public:
     void ProcessMouseScroll(float yoffset);
 
     glm::mat4 LookAt(Vector3 position, Vector3 target, Vector3 worldUp);
+
+    void SetPosition(Vector3 _position);
 
 private:
     void updateCameraVectors();

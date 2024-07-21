@@ -16,3 +16,8 @@ void Transform::SetPosition(Vector3 newPos)
 {
     m_position.Translate(newPos);
 }
+
+Vector3 Transform::GetPosition()
+{
+    return m_position;
+}
